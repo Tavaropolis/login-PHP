@@ -9,7 +9,12 @@
 * {
     box-sizing: border-box;
     font-family: var(--main-font);
-    background-color: var(--background-color);
+    
+}
+
+html {
+    height: 100vh;
+    background: linear-gradient(var(--background-color), var(--background-color), var(--background-color), var(--title-color));
 }
 
 main {
@@ -19,7 +24,6 @@ main {
     justify-content: center;
     height: 50vh;
 }
-
 
 h1 {
     color: var(--title-color);
