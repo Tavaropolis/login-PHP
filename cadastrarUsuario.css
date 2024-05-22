@@ -1,0 +1,18 @@
+:root {
+    --main-font: "Roboto Slab", serif;
+    --background-color: #4973C8;
+    --secondary-color: #C6D4F0;
+    --title-color: #EAD1F5;
+    --hover-color: #A8C0F2;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: var(--main-font);
+    
+}
+
+html {
+    height: 100vh;
+    background: linear-gradient(var(--background-color), var(--background-color), var(--background-color), var(--title-color));
+}

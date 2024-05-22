@@ -4,12 +4,13 @@
     --secondary-color: #C6D4F0;
     --title-color: #EAD1F5;
     --hover-color: #A8C0F2;
+    --label-color: #ffff;
 }
 
 * {
     box-sizing: border-box;
     font-family: var(--main-font);
-    
+    transition: all 1s;
 }
 
 html {
@@ -27,7 +28,8 @@ main {
 
 h1 {
     color: var(--title-color);
-    font-size: 5rem;
+    font-size: 5em;
+    text-align: center;
 }
 
 form {
@@ -37,14 +39,25 @@ form {
     justify-content: center;
     padding: 5px;
     margin-top: 10px;
+    width: 25vw;
+    border: solid 3px var(--title-color);
+    border-radius: 5px;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
 }
 
 label {
-    color: var(--title-color);
+    color: var(--label-color);
     padding: 5px;
 }
 
 input {
+    width: 15vw;
     background-color: var(--secondary-color);
     border-radius: 5px;
     border: none;
@@ -53,6 +66,27 @@ input {
 
 input:focus {
     outline-color: var(--title-color);
+}
+
+a {
+    color: var(--title-color);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#esqueci-minha-senha {
+    font-size: 10px;
+    color: var(--title-color);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--label-color)
+}
+
+#esqueci-minha-senha:hover {
+    color: var(--label-color);
 }
 
 button {
@@ -65,4 +99,20 @@ button {
 
 button:hover {
     background-color: var(--hover-color);
+}
+
+.new-account-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 25vw;
+    height: 5vh;
+    border: solid 3px var(--title-color);
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+span {
+    color: var(--label-color);
+    padding: 5px;
 }
