@@ -14,12 +14,12 @@
     <main>
         <h1>Login</h1>
         <div class="main-container">
-            <form action="" method="post">
+            <form action="#" method="post">
                 <div class="input-container">
                     <label for="user">Usuário</label>
-                    <input type="text" name="user" id="">
+                    <input required type="text" name="user" id="">
                     <label for="password">Senha</label>
-                    <input type="password" name="password" id="">
+                    <input required type="password" name="password" id="">
                     <a href="" id="esqueci-minha-senha">Esqueci minha senha</a>
                 </div>
                 <button type="submit">Entrar</button>
@@ -27,6 +27,18 @@
             <div class="new-account-container">
                 <span>Novo no APMS? </span><a href="./cadastrarUsuario.php">Criar usuario</a>
             </div>
+            <?php 
+                session_start();
+
+                if(isset($_POST['user'])) {
+                    $_SESSION['user'] = strip_tags($_POST['user']);
+                }
+
+                if(isset($_SESSION['user'])) {
+                    header("location: main.php");
+                    die();
+                }    
+            ?>
         </div>
     </main>
 </body>
