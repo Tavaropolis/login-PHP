@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main</title>
+    <!-- Estilização -->
+    <link rel="shortcut icon" href="./assets/iconsPlanner.png" type="image/x-icon">
+    
+    <title>APMS - Main</title>
 </head>
 <body>
     <h1>Você está logado</h1>

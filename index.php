@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
 
-    <title>Login</title>
+    <title>APMS - Login</title>
 </head>
 <body>
     <main>
@@ -26,7 +26,7 @@
                 <button type="submit">Entrar</button>
             </form>
             <div class="new-account-container">
-                <span>Novo no APMS? </span><a href="./cadastrarUsuario.php">Criar usuario</a>
+                <span>Novo no APMS? </span><a href="./cadastrarUsuario.php" target="__blank">Criar usuario</a>
             </div>
             <?php 
                 session_start();
