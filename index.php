@@ -17,7 +17,7 @@
         <div class="main-container">
             <form action="#" method="post">
                 <div class="input-container">
-                    <label for="user">Usuário</label>
+                    <label for="user">Email</label>
                     <input required type="text" name="user" id="">
                     <label for="password">Senha</label>
                     <input required type="password" name="password" id="">
