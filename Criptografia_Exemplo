@@ -1,0 +1,15 @@
+//https://www.youtube.com/watch?v=5URqPGmJWFM
+
+<?php
+
+$senha = "abc1234";
+
+passwor_hash(string, PASSWORD_DEFAULT); //Criptografa a senha
+
+print_r($senha_cripto);
+
+if(password_verify//Confere a senha para ver se é a mesma da hash('abc1234'//senha, hash//senha cripto)) { //Confere a senha para ver se é a mesma da hash
+  echo "Senha confere";
+} else {
+  echo "Senha não confere";
+}
