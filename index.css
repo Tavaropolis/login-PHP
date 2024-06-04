@@ -115,4 +115,23 @@ button:hover {
 span {
     color: var(--label-color);
     padding: 5px;
+    font-size: 17px;
+}
+
+@media (max-width: 450px) {
+    form {
+        width: 45vw;
+    }
+
+    input {
+        width: 25vw;
+    }
+
+    .new-account-container {
+        width: 45vw;
+    }
+
+    span {
+        font-size: 14px;
+    }
 }
