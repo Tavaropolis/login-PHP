@@ -18,9 +18,12 @@
             <form action="#" method="post">
                 <div class="input-container">
                     <label for="user">Email</label>
-                    <input required type="text" name="user" id="">
+                    <input type="text" name="user" id="">
                     <label for="password">Senha</label>
-                    <input required type="password" name="password" id="">
+                    <div class="">
+                        <input type=<?php $tipoInput ?> name="password" id="">
+                        <button class="icon-button" type="submit" name="visualizar"><img src="./assets/visibility.svg" alt=""></button>
+                    </div>
                     <a href="" id="esqueci-minha-senha">Esqueci minha senha</a>
                 </div>
                 <button type="submit">Entrar</button>
@@ -30,15 +33,23 @@
             </div>
             <?php 
                 session_start();
+                $tipoInput = "password";
+
 
                 if(isset($_POST['user'])) {
                     $_SESSION['user'] = strip_tags($_POST['user']);
                 }
 
-                if(isset($_SESSION['user'])) {
-                    header("location: main.php");
-                    die();
-                }    
+                if(array_key_exists('visualizar', $_POST)) {
+                    if($visivel) {
+                        $tipoInput = "text";
+                    }
+                }
+
+                // if(isset($_SESSION['user'])) {
+                //     header("location: main.php");
+                //     die();
+                // }    
             ?>
         </div>
     </main>

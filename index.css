@@ -89,6 +89,7 @@ a:hover {
     color: var(--label-color);
 }
 
+
 button {
     background-color: var(--title-color);
     font-weight: bold;
@@ -101,6 +102,9 @@ button:hover {
     background-color: var(--hover-color);
 }
 
+.icon-button {
+    background-color: transparent;
+}
 .new-account-container {
     display: flex;
     justify-content: center;
