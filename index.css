@@ -105,6 +105,19 @@ button:hover {
 .icon-button {
     background-color: transparent;
 }
+
+.password-container {
+    display: flex;
+    flex-direction: row;
+    padding: 0px;
+    margin: 0;
+}
+
+#visible-icon {
+    margin-left: 5px;
+    cursor: pointer
+}
+
 .new-account-container {
     display: flex;
     justify-content: center;

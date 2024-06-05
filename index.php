@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    <script src="./index.js" defer></script>
 
     <title>APMS - Login</title>
 </head>
@@ -20,9 +21,9 @@
                     <label for="user">Email</label>
                     <input type="text" name="user" id="">
                     <label for="password">Senha</label>
-                    <div class="">
-                        <input type=<?php $tipoInput ?> name="password" id="">
-                        <button class="icon-button" type="submit" name="visualizar"><img src="./assets/visibility.svg" alt=""></button>
+                    <div class="password-container">
+                        <input type="password" name="password" id="password-input">
+                        <img src="./assets/visibility.svg" alt="" id="visible-icon">
                     </div>
                     <a href="" id="esqueci-minha-senha">Esqueci minha senha</a>
                 </div>
@@ -33,23 +34,15 @@
             </div>
             <?php 
                 session_start();
-                $tipoInput = "password";
-
 
                 if(isset($_POST['user'])) {
                     $_SESSION['user'] = strip_tags($_POST['user']);
                 }
 
-                if(array_key_exists('visualizar', $_POST)) {
-                    if($visivel) {
-                        $tipoInput = "text";
-                    }
-                }
-
-                // if(isset($_SESSION['user'])) {
-                //     header("location: main.php");
-                //     die();
-                // }    
+                if(isset($_SESSION['user'])) {
+                    header("location: main.php");
+                    die();
+                }    
             ?>
         </div>
     </main>
