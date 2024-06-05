@@ -69,6 +69,18 @@ input:focus {
     outline-color: var(--title-color);
 }
 
+.password-container {
+    display: flex;
+    flex-direction: row;
+    padding: 0px;
+    margin: 0;
+}
+
+.visible-icon {
+    margin-left: 5px;
+    cursor: pointer
+}
+
 button {
     background-color: var(--title-color);
     font-weight: bold;

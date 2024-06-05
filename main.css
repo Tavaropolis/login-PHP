@@ -42,7 +42,7 @@ img {
 }
 
 input[type="submit"] {
-    background-color: var(--title-color);
+    background-color: #CD78F2;
     width: 20vw;
     height: 5vh;
     font-weight: bold;
