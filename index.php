@@ -18,8 +18,8 @@
         <div class="main-container">
             <form action="#" method="post">
                 <div class="input-container">
-                    <label for="user">Email</label>
-                    <input type="text" name="user" id="">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="">
                     <label for="password">Senha</label>
                     <div class="password-container">
                         <input type="password" name="password" id="password-input">
@@ -32,17 +32,30 @@
             <div class="new-account-container">
                 <span>Novo no APMS? </span><a href="./cadastrarUsuario.php" target="__blank">Criar usuario</a>
             </div>
-            <?php 
+            <?php
+                $db = new SQLite3('db.db');
+
                 session_start();
 
-                if(isset($_POST['user'])) {
-                    $_SESSION['user'] = strip_tags($_POST['user']);
-                }
+                if(isset($_POST['email'])) {
+                    $email = strip_tags($_POST['email']);
+                    $password = $_POST['password'];
+                    
+                    $resultado = $db->query("SELECT * FROM Users WHERE email = '{$email}';");
 
-                if(isset($_SESSION['user'])) {
-                    header("location: main.php");
-                    die();
-                }    
+                    $usuarios = [];
+
+                    while( $dados = $resultado->fetchArray(SQLITE3_ASSOC)){
+                        array_push($usuarios,$dados);
+                    }
+
+                    foreach ($usuarios as $key => $usuario) {
+                        if(password_verify($password, $usuario['password'])) {
+                            header("location: main.php");
+                            die();
+                        }
+                    }
+                }
             ?>
         </div>
     </main>
