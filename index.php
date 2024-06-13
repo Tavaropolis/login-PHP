@@ -38,6 +38,7 @@
                 session_start();
 
                 if(isset($_POST['email'])) {
+
                     $email = strip_tags($_POST['email']);
                     $password = $_POST['password'];
                     
@@ -50,7 +51,12 @@
                     }
 
                     foreach ($usuarios as $key => $usuario) {
-                        if(password_verify($password, $usuario['password'])) {
+                        //Validando usuário e senha
+                        if(password_verify($password, $usuario['password']) && ($email == $usuario['email'])) {
+                            // Definindo variáveis de sessão
+                            $_SESSION['email'] = $email;
+                            $_SESSION['password'] = $password;
+
                             header("location: main.php");
                             die();
                         }
