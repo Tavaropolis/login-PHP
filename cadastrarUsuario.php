@@ -17,8 +17,8 @@
         <h1>Cadastrar usuário</h1>
         <form action="#" method="post">
             <div class="input-container">
-                <label for="user">Usuário</label>
-                <input required type="text" name="user" id="" placeholder="Digite o nome de usuário" required>
+                <label for="usuario">Usuário</label>
+                <input required type="text" name="usuario" id="" placeholder="Digite o nome de usuário" required>
                 <label for="emil">Email</label>
                 <input type="email" name="email" id="" placeholder="Digite o email de cadastro" required>
                 <label for="password">Senha</label>
@@ -34,6 +34,24 @@
                 <button type="submit">Criar usuário</button>
             </div>
         </form>
+        <?php
+            //Carregando o banco
+            $db = new SQLite3('db.db');
+
+            if(isset($_POST['email'])) {
+                $usuario = strip_tags($_POST['usuario']);
+                $email = strip_tags($_POST['email']);
+                $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                
+                if($_POST['password'] == $_POST['password-confirmation']) {
+                    //Inserindo os dados no banco
+                    $db->query("INSERT INTO Users ('email', 'password', 'usuario') VALUES ('{$email}', '{$password}', '{$usuario}');");
+
+                    echo "<p class='mensagem'>Usuario cadastrado com sucesso 🙂</p>";
+                }
+            }
+
+        ?>
     </main>
 </body>
 </html>
