@@ -16,7 +16,7 @@
     <main>
         <h1>Login</h1>
         <div class="main-container">
-            <form action="#" method="post">
+            <form action="./index.php" method="post">
                 <div class="input-container">
                     <label for="email">Email</label>
                     <input type="text" name="email" id="">
@@ -30,7 +30,7 @@
                 <button type="submit">Entrar</button>
             </form>
             <div class="new-account-container">
-                <span>Novo no APMS? </span><a href="./cadastrarUsuario.php" target="__blank">Criar usuario</a>
+                <span>Novo no APMS? </span><a href="./cadastrarUsuario.php">Criar usuario</a>
             </div>
             <?php
                 //Carregando o banco

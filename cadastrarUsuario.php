@@ -15,7 +15,7 @@
 <body>
     <main>
         <h1>Cadastrar usuário</h1>
-        <form action="#" method="post">
+        <form action="./cadastrarUsuario.php" method="post">
             <div class="input-container">
                 <label for="usuario">Usuário</label>
                 <input required type="text" name="usuario" id="" placeholder="Digite o nome de usuário" required>
@@ -47,8 +47,9 @@
                     //Inserindo os dados no banco
                     $db->query("INSERT INTO Users ('email', 'password', 'usuario') VALUES ('{$email}', '{$password}', '{$usuario}');");
 
-                    echo "<p class='mensagem'>Usuario cadastrado com sucesso 🙂</p>";
-                }
+                    echo "<p class='mensagem-sucesso'>Usuario cadastrado com sucesso 🙂</p>";
+                    echo "<a href='./index.php'><button>Voltar</button></a>";
+                } 
             }
 
         ?>

@@ -94,6 +94,12 @@ button:hover {
     background-color: var(--hover-color);
 }
 
+.mensagem-sucesso {
+    color: var(--label-color);
+    font-weight: bold;
+    margin: 10px;
+}
+
 @media (max-width: 450px) {
     h1 {
         font-size: 4em;
