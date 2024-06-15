@@ -33,15 +33,26 @@
                 <span>Novo no APMS? </span><a href="./cadastrarUsuario.php" target="__blank">Criar usuario</a>
             </div>
             <?php
+                //Carregando o banco
                 $db = new SQLite3('db.db');
 
+                //Iniciando variavéis de sessão
                 session_start();
 
-                if(isset($_POST['email'])) {
+                //Se já tiver Cookie, não cai no login
+                if(isset($_COOKIE['usuario'])) {
+                    $_SESSION['id'] = $_COOKIE['id'];
+                    $_SESSION['email'] = $_COOKIE['email'];
+                    $_SESSION['usuario'] = $_COOKIE['usuario'];
+                    header("location: main.php");
+                    die();
+                }
 
+                if(isset($_POST['email'])) {
                     $email = strip_tags($_POST['email']);
                     $password = $_POST['password'];
                     
+                    //Buscando o usuário no bando através do email
                     $resultado = $db->query("SELECT * FROM Users WHERE email = '{$email}';");
 
                     $usuarios = [];
@@ -54,9 +65,16 @@
                         //Validando usuário e senha
                         if(password_verify($password, $usuario['password']) && ($email == $usuario['email'])) {
                             // Definindo variáveis de sessão
+                            $_SESSION['id'] = $usuario['idUsuario'];
                             $_SESSION['email'] = $email;
-                            $_SESSION['password'] = $password;
+                            $_SESSION['usuario'] = $usuario['usuario'];
 
+                            //Definindo os Cookies
+                            setcookie("id", $usuario['idUsuario'], time() + (24 * 60 * 60), '/');
+                            setcookie("usuario", $usuario['usuario'], time() + (24 * 60 * 60), '/'); //Expira em um dia
+                            setcookie("email", $usuario['email'], time() + (24 * 60 * 60), '/');
+
+                            //Transferindo para outra página web
                             header("location: main.php");
                             die();
                         }

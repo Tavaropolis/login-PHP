@@ -19,14 +19,27 @@
     <?php
         session_start();
 
+        //Se não tem sessão, volta no login
         if(!isset($_SESSION['email'])) {
             header("location: index.php");
             die();
         }    
 
         if(array_key_exists('deslogar', $_POST)) { 
+            //Encerrando a sessão
             session_unset();
             session_destroy();
+
+            //Encerrando os cookies
+            unset($_COOKIE['id']);
+            unset($_COOKIE['email']);
+            unset($_COOKIE['usuario']);
+
+            setcookie("id", "", time()-3600);
+            setcookie("email", "", time()-3600);
+            setcookie("usuario", "", time()-3600);
+
+            //Redirecionando pro login
             header("location: index.php");
             die();
         } 
