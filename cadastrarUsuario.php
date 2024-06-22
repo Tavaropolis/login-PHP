@@ -37,21 +37,48 @@
         <?php
             //Carregando o banco
             $db = new SQLite3('db.db');
-
+            
             if(isset($_POST['email'])) {
                 $usuario = strip_tags($_POST['usuario']);
                 $email = strip_tags($_POST['email']);
                 $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
                 
-                if($_POST['password'] == $_POST['password-confirmation']) {
-                    //Inserindo os dados no banco
-                    $db->query("INSERT INTO Users ('email', 'password', 'usuario') VALUES ('{$email}', '{$password}', '{$usuario}');");
-
-                    echo "<p class='mensagem-sucesso'>Usuario cadastrado com sucesso 🙂</p>";
-                    echo "<a href='./index.php'><button>Voltar</button></a>";
-                } 
+                //Checando se o email já está cadastrado
+                $resultado = $db->query("select ifnull((SELECT email from Users where email = '$email'),'a')");
+                
+                $usuarios = [];
+                if (!is_null($email)) {
+                    if($resultado != $email) {                   
+                        if($_POST['password'] == $_POST['password-confirmation']) {
+                        //Inserindo os dados no banco
+                        $db->query("INSERT INTO Users ('email', 'password', 'usuario') VALUES ('{$email}', '{$password}', '{$usuario}')");
+                        
+                        echo "<p class='mensagem-sucesso'>Usuario cadastrado com sucesso 🙂</p>";
+                        echo "<a href='./index.php'><button>Voltar</button></a>"; 
+                        };
+                    } else {
+                        echo "<p class='mensagem-sucesso'>Email já cadastrado</p>";
+                    }
+                }
+                // while( $dados = $resultado->fetchArray(SQLITE3_ASSOC)){
+                //     array_push($usuarios,$dados);
+                // }
+                
+                // foreach ($usuarios as $key => $usuario) {
+                //     if(is_numeric($usuario['resultado'])) {  
+                //         echo "<p>Caiu aqui 😀</p>";                      
+                //         if($_POST['password'] == $_POST['password-confirmation']) {
+                //         //Inserindo os dados no banco
+                //         $db->query("INSERT INTO Users ('email', 'password', 'usuario') VALUES ('{$email}', '{$password}', '{$usuario}')");
+    
+                //         echo "<p class='mensagem-sucesso'>Usuario cadastrado com sucesso 🙂</p>";
+                //         echo "<a href='./index.php'><button>Voltar</button></a>"; 
+                //         };
+                //     } else {
+                //         echo "<p class='mensagem-sucesso'> Email já cadastrado 😠</p>";
+                //     }                
+                // }
             }
-
         ?>
     </main>
 </body>
